@@ -1,0 +1,72 @@
+extensions:
+  - addsTo:
+      pack: codeql/java-all
+      extensible: summaryModel
+    data:
+      # CronDefinitionBuilder.instanceDefinitionFor(CronType) - creates CronDefinition from CronType enum
+      - [
+          "com.cronutils.model.definition",
+          "CronDefinitionBuilder",
+          true,
+          "instanceDefinitionFor",
+          "(CronType)",
+          "",
+          "Argument[0]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
+      # CronParser(CronDefinition) - constructor configures parser with a CronDefinition
+      - [
+          "com.cronutils.parser",
+          "CronParser",
+          true,
+          "CronParser",
+          "(CronDefinition)",
+          "",
+          "Argument[0]",
+          "Argument[this]",
+          "taint",
+          "manual"
+        ]
+      # CronParser.parse(String) - parses a cron expression string into a Cron object
+      - [
+          "com.cronutils.parser",
+          "CronParser",
+          true,
+          "parse",
+          "(String)",
+          "",
+          "Argument[0]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
+      # Cron.asString() - converts a Cron object back to its string representation
+      - ["com.cronutils.model", "Cron", true, "asString", "()", "", "Argument[this]", "ReturnValue", "taint", "manual"]
+      # CronDescriptor.instance(Locale) - factory method creating a CronDescriptor for a locale
+      - [
+          "com.cronutils.descriptor",
+          "CronDescriptor",
+          true,
+          "instance",
+          "(Locale)",
+          "",
+          "Argument[0]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
+      # CronDescriptor.describe(Cron) - produces a human-readable description of a Cron expression
+      - [
+          "com.cronutils.descriptor",
+          "CronDescriptor",
+          true,
+          "describe",
+          "(Cron)",
+          "",
+          "Argument[0]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
