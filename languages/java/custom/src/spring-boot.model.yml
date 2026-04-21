@@ -1,0 +1,85 @@
+extensions:
+  - addsTo:
+      pack: codeql/java-all
+      extensible: sourceModel
+    data:
+      # SpringApplication.run(Class, String[]) - args parameter is a source of command-line arguments
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(Class,String[])",
+          "",
+          "Argument[1]",
+          "commandargs",
+          "manual"
+        ]
+      # SpringApplication.run(Class[], String[]) - args parameter is a source of command-line arguments
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(Class[],String[])",
+          "",
+          "Argument[1]",
+          "commandargs",
+          "manual"
+        ]
+      # SpringApplication.run(String...) - instance method, args parameter is a source of command-line arguments
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(String[])",
+          "",
+          "Argument[0]",
+          "commandargs",
+          "manual"
+        ]
+
+  - addsTo:
+      pack: codeql/java-all
+      extensible: summaryModel
+    data:
+      # SpringApplication.run(Class, String[]) - args flow to the returned ApplicationContext
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(Class,String[])",
+          "",
+          "Argument[1]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
+      # SpringApplication.run(Class[], String[]) - args flow to the returned ApplicationContext
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(Class[],String[])",
+          "",
+          "Argument[1]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
+      # SpringApplication.run(String...) - instance method, args flow to the returned ApplicationContext
+      - [
+          "org.springframework.boot",
+          "SpringApplication",
+          False,
+          "run",
+          "(String[])",
+          "",
+          "Argument[0]",
+          "ReturnValue",
+          "taint",
+          "manual"
+        ]
