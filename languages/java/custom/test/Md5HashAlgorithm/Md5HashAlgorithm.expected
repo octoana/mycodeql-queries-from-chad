@@ -1,0 +1,2 @@
+| Md5HashAlgorithm.java:7:5:7:36 | getInstance(...) | MD5 is obsolete and should be replaced with a stronger hash algorithm. |
+| Md5HashAlgorithm.java:11:5:11:47 | getInstance(...) | MD5 is obsolete and should be replaced with a stronger hash algorithm. |
