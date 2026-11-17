@@ -1,0 +1,16 @@
+edges
+| actions/sendData.ts:1:38:1:42 | props | actions/sendData.ts:2:22:2:26 | props | provenance |  |
+| actions/sendData.ts:2:22:2:26 | props | actions/sendData.ts:2:22:2:33 | props.apiUrl | provenance |  |
+| loaders/loadData.ts:1:38:1:42 | props | loaders/loadData.ts:2:22:2:26 | props | provenance |  |
+| loaders/loadData.ts:2:22:2:26 | props | loaders/loadData.ts:2:22:2:33 | props.apiUrl | provenance |  |
+nodes
+| actions/sendData.ts:1:38:1:42 | props | semmle.label | props |
+| actions/sendData.ts:2:22:2:26 | props | semmle.label | props |
+| actions/sendData.ts:2:22:2:33 | props.apiUrl | semmle.label | props.apiUrl |
+| loaders/loadData.ts:1:38:1:42 | props | semmle.label | props |
+| loaders/loadData.ts:2:22:2:26 | props | semmle.label | props |
+| loaders/loadData.ts:2:22:2:33 | props.apiUrl | semmle.label | props.apiUrl |
+subpaths
+#select
+| actions/sendData.ts:2:16:2:54 | fetch(p ... OST" }) | actions/sendData.ts:1:38:1:42 | props | actions/sendData.ts:2:22:2:33 | props.apiUrl | The $@ of this request depends on a $@. | actions/sendData.ts:2:22:2:33 | props.apiUrl | URL | actions/sendData.ts:1:38:1:42 | props | user-provided value |
+| loaders/loadData.ts:2:16:2:34 | fetch(props.apiUrl) | loaders/loadData.ts:1:38:1:42 | props | loaders/loadData.ts:2:22:2:33 | props.apiUrl | The $@ of this request depends on a $@. | loaders/loadData.ts:2:22:2:33 | props.apiUrl | URL | loaders/loadData.ts:1:38:1:42 | props | user-provided value |
